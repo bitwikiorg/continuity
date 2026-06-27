@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Binding",
+  "description": "Finite authorization for a recursive computation",
+  "type": "object",
+  "required": [
+    "binding_id",
+    "who",
+    "what",
+    "budget",
+    "allowed_tools",
+    "stop_conditions"
+  ],
+  "properties": {
+    "binding_id": {
+      "type": "string",
+      "description": "Unique identifier"
+    },
+    "who": {
+      "type": "object",
+      "required": [
+        "name",
+        "role"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "parent": {
+          "type": "string"
+        }
+      }
+    },
+    "what": {
+      "type": "object",
+      "required": [
+        "objective"
+      ],
+      "properties": {
+        "objective": {
+          "type": "string"
+        },
+        "success_criteria": {
+          "type": "string"
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "max_seconds": {
+          "type": "integer"
+        },
+        "max_tokens": {
+          "type": "integer"
+        },
+        "max_turns": {
+          "type": "integer"
+        },
+        "max_depth": {
+          "type": "integer"
+        },
+        "max_disk_mb": {
+          "type": "integer"
+        }
+      }
+    },
+    "allowed_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "h_gate": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "manual",
+            "scripted",
+            "witnessed"
+          ]
+        },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "witness": {
+      "type": "object",
+      "properties": {
+        "required_evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "validation_method": {
+          "type": "string"
+        }
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "writeback": {
+      "type": "object",
+      "properties": {
+        "to": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

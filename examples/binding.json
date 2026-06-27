@@ -1,0 +1,47 @@
+{
+  "binding_id": "example-research-001",
+  "who": {
+    "name": "{{AGENT_NAME}}",
+    "role": "researcher",
+    "parent": "{{PARENT_AGENT}}"
+  },
+  "what": {
+    "objective": "Research topic X and return cited findings",
+    "success_criteria": "Findings have at least 2 independent sources with confidence >= 0.8"
+  },
+  "budget": {
+    "max_seconds": 1800,
+    "max_tokens": 80000,
+    "max_turns": 10,
+    "max_depth": 0,
+    "max_disk_mb": 200
+  },
+  "allowed_tools": [
+    "search_engine",
+    "code_execution_tool",
+    "document_query"
+  ],
+  "h_gate": {
+    "type": "scripted",
+    "triggers": [
+      "budget_exhausted",
+      "tool_outside_scope"
+    ]
+  },
+  "witness": {
+    "required_evidence": [
+      "execution_trace",
+      "artifact"
+    ],
+    "validation_method": "citation_count >= 2"
+  },
+  "stop_conditions": [
+    "success_criteria_met",
+    "budget_exhausted",
+    "no_measurable_progress"
+  ],
+  "writeback": {
+    "to": "memory/semantic/research-X.md",
+    "format": "markdown"
+  }
+}
