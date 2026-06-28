@@ -1,8 +1,9 @@
 {
   "binding_id": "example-research-001",
+  "parent_binding_id": null,
   "who": {
     "name": "{{AGENT_NAME}}",
-    "role": "researcher",
+    "role": "worker",
     "parent": "{{PARENT_AGENT}}"
   },
   "what": {
@@ -14,6 +15,7 @@
     "max_tokens": 80000,
     "max_turns": 10,
     "max_depth": 0,
+    "max_subordinates": 0,
     "max_disk_mb": 200
   },
   "allowed_tools": [
@@ -21,8 +23,20 @@
     "code_execution_tool",
     "document_query"
   ],
+  "forbidden_tools": [
+    "call_subordinate",
+    "scheduler:create_*"
+  ],
   "h_gate": {
     "type": "scripted",
+    "threshold": 0.7,
+    "checks": [
+      "intent_alignment",
+      "scope_clarity",
+      "no_destructive_ops",
+      "budget_respected",
+      "output_schema_valid"
+    ],
     "triggers": [
       "budget_exhausted",
       "tool_outside_scope"
@@ -33,15 +47,23 @@
       "execution_trace",
       "artifact"
     ],
-    "validation_method": "citation_count >= 2"
+    "validation_method": "citation_count >= 2",
+    "hash_files": [
+      "memory/semantic/research-X.md"
+    ]
   },
   "stop_conditions": [
     "success_criteria_met",
     "budget_exhausted",
-    "no_measurable_progress"
+    "no_measurable_progress",
+    "h_gate_failed"
   ],
   "writeback": {
     "to": "memory/semantic/research-X.md",
-    "format": "markdown"
+    "format": "structured"
+  },
+  "settlement": {
+    "type": "local_hash",
+    "record_to": "snapshots/binding-example-research-001.json"
   }
 }

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Binding",
-  "description": "Finite authorization for a recursive computation",
+  "title": "Binding Contract v1.1",
+  "description": "Finite authorization for a recursive computation. A binding scopes identity, objective, budget, allowed tools, alignment gates, witness requirements, and stop conditions.",
   "type": "object",
   "required": [
     "binding_id",
@@ -14,31 +14,34 @@
   "properties": {
     "binding_id": {
       "type": "string",
-      "description": "Unique identifier"
+      "description": "Unique identifier for this binding"
+    },
+    "parent_binding_id": {
+      "type": "string",
+      "description": "Parent binding, if this is a child binding"
     },
     "who": {
       "type": "object",
-      "required": [
-        "name",
-        "role"
-      ],
+      "description": "Identity of the bound agent",
+      "required": ["name", "role"],
       "properties": {
         "name": {
           "type": "string"
         },
         "role": {
-          "type": "string"
+          "type": "string",
+          "enum": ["nexus", "inference", "worker", "team-leader"]
         },
         "parent": {
-          "type": "string"
+          "type": "string",
+          "description": "Name of the parent agent that spawned this binding"
         }
       }
     },
     "what": {
       "type": "object",
-      "required": [
-        "objective"
-      ],
+      "description": "Objective and success criteria",
+      "required": ["objective"],
       "properties": {
         "objective": {
           "type": "string"
@@ -50,6 +53,7 @@
     },
     "budget": {
       "type": "object",
+      "description": "Resource limits for this binding",
       "properties": {
         "max_seconds": {
           "type": "integer"
@@ -61,31 +65,59 @@
           "type": "integer"
         },
         "max_depth": {
+          "type": "integer",
+          "description": "Max subordinate depth (0 = sterile worker)"
+        },
+        "max_subordinates": {
           "type": "integer"
         },
         "max_disk_mb": {
           "type": "integer"
+        },
+        "cost_usd": {
+          "type": "number"
         }
       }
     },
     "allowed_tools": {
       "type": "array",
+      "description": "Tool names permitted in this binding",
+      "items": {
+        "type": "string"
+      }
+    },
+    "forbidden_tools": {
+      "type": "array",
+      "description": "Tool names explicitly forbidden",
       "items": {
         "type": "string"
       }
     },
     "h_gate": {
       "type": "object",
+      "description": "Alignment gate. Either a scripted/triggered gate or a scored gate (H score). Both may be present.",
       "properties": {
         "type": {
-          "enum": [
-            "manual",
-            "scripted",
-            "witnessed"
-          ]
+          "type": "string",
+          "enum": ["manual", "scripted", "witnessed"],
+          "description": "How the gate is evaluated"
+        },
+        "threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Minimum H score to proceed to Settle (see H_GATE.md)"
+        },
+        "checks": {
+          "type": "array",
+          "description": "Named checks that contribute to the H score",
+          "items": {
+            "type": "string"
+          }
         },
         "triggers": {
           "type": "array",
+          "description": "Events that trigger gate evaluation",
           "items": {
             "type": "string"
           }
@@ -94,6 +126,7 @@
     },
     "witness": {
       "type": "object",
+      "description": "Evidence required before settling",
       "properties": {
         "required_evidence": {
           "type": "array",
@@ -103,22 +136,44 @@
         },
         "validation_method": {
           "type": "string"
+        },
+        "hash_files": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
     "stop_conditions": {
       "type": "array",
+      "description": "Conditions that end the binding",
       "items": {
         "type": "string"
       }
     },
     "writeback": {
       "type": "object",
+      "description": "Where and how to persist results",
       "properties": {
         "to": {
           "type": "string"
         },
         "format": {
+          "type": "string",
+          "enum": ["structured", "narrative", "raw"]
+        }
+      }
+    },
+    "settlement": {
+      "type": "object",
+      "description": "How settlement is recorded",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["local_hash", "on_chain_anchor"]
+        },
+        "record_to": {
           "type": "string"
         }
       }
