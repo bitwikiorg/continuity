@@ -1,0 +1,24 @@
+
+\section{Threat Model}
+
+\input{figures/fig_threat_surface}
+
+Continuity moves useful state into plain files. That improves visibility, but it also creates an obvious attack surface.
+
+\subsection{Assets}
+
+The protected assets are source code, secrets, project state, task queues, branch and review records, generated artifacts, and tool permissions.
+
+\subsection{Adversaries}
+
+Relevant adversaries include malicious pull requests, poisoned issue bodies, compromised documentation, prompt-injected tool output, careless agents, stale generated summaries, and over-permissioned automation.
+
+\subsection{Failure modes}
+
+The core failures are prompt injection, silent instruction override, stale-state obedience, false completion, secret persistence, and agent collision. Multi-agent use adds lock poisoning, fake claims, and adversarial handoff records.
+
+\subsection{Mitigations}
+
+\input{tables/table_threat_model}
+
+The mitigation stack is straightforward in principle: treat imported text as untrusted, validate every trusted file, require evidence for completion, keep permissions narrow, and insist on review before high-impact state changes become canonical.

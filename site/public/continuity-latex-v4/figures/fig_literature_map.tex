@@ -1,0 +1,18 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[every node/.style={figlabel}, box/.style={figbox, minimum width=3.35cm, minimum height=.9cm, align=center}]
+\path[figpanel] (-5.45,-3.55) rectangle (5.45,3.55);
+\node[figtitle, anchor=west] at (-5.0,3.0) {FOUNDATION MAP};
+\node[livebox, minimum width=3.0cm, minimum height=1.0cm, font=\sffamily\bfseries] (c) at (0,0) {CONTINUITY};
+\node[box, fill=BitBlue!10, draw=BitBlue!65] (m) at (0,2.25) {External memory};
+\node[box, fill=BitTeal!10, draw=BitTeal!70] (r) at (4.0,1.2) {Repository manifests};
+\node[box, fill=BitGold!14, draw=BitGold!76!black] (a) at (4.0,-1.2) {Architecture and provenance};
+\node[box, fill=BitRose!10, draw=BitRose!65] (g) at (0,-2.25) {Security and governance};
+\node[box, fill=BitGray, draw=BitSlate!70] (d) at (-4.0,-1.2) {Distributed cognition};
+\node[box, fill=BitGray, draw=BitSlate!70] (u) at (-4.0,1.2) {Multi-agent coordination};
+\foreach \n in {m,r,a,g,d,u}{\draw[figarrow] (\n) -- (c);}
+\end{tikzpicture}
+\caption{Six literatures support the proposal. The paper sits at their intersection rather than inside only one of them.}
+\label{fig:literature-map}
+\end{figure}

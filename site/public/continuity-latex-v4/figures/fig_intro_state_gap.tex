@@ -1,0 +1,38 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  every node/.style={figlabel},
+  panel/.style={figbox, minimum width=5.35cm, minimum height=5.05cm, align=center},
+  loop/.style={draw=BitSlate!85, line width=0.85pt, circle, minimum size=1.2cm, align=center}
+]
+\node[panel] (left) at (0,0) {};
+\node[anchor=north, figtitle, font=\sffamily\bfseries\large] at ($(left.north)+(0,-0.26)$) {Without CONTINUITY};
+\foreach \y/\txt in {1.20/{observe},0.0/{reason},-1.20/{act}} {
+  \node[loop] at (-0.95,\y) {\txt};
+}
+\draw[BitRose!90!black, line width=1.6pt] ($(left.west)+(0.62,0.58)$) -- ($(left.east)+(-0.62,0.58)$);
+\node[figsmall, text=BitRose!90!black, fill=white, inner sep=1pt] at (0.0,0.86) {session boundary};
+\draw[figarrow] (-0.95,0.6) -- (-0.95,0.32);
+\draw[figarrow] (-0.95,-0.6) -- (-0.95,-0.88);
+\node[align=center, figsmall] at (0,-2.02) {work restarts\\context evaporates};
+
+\node[panel, fill=BitBlue!6, draw=BitBlue!65] (right) at (7.25,0) {};
+\node[anchor=north, figtitle, font=\sffamily\bfseries\large] at ($(right.north)+(0,-0.26)$) {With CONTINUITY};
+\draw[BitBlue!78, line width=1.8pt] ($(right.center)+(-1.65,-1.65)$)
+   .. controls +(0,1.05) and +(0,-1.0) .. ($(right.center)+(-0.75,-0.95)$)
+   .. controls +(0,1.0) and +(0,-1.0) .. ($(right.center)+(0.0,-0.18)$)
+   .. controls +(0,1.0) and +(0,-1.0) .. ($(right.center)+(0.78,0.55)$)
+   .. controls +(0,1.0) and +(0,-1.0) .. ($(right.center)+(1.58,1.6)$);
+\foreach \x/\y in {-1.65/-1.65,-0.75/-0.95,0/-0.18,0.78/0.55,1.58/1.60} {
+  \fill[white] ($(right.center)+(\x,\y)$) circle (0.13cm);
+  \draw[BitBlue!85, line width=0.75pt] ($(right.center)+(\x,\y)$) circle (0.13cm);
+}
+\node[livebox, minimum width=1.65cm, minimum height=.52cm, font=\sffamily\scriptsize\bfseries] at ($(right.center)+(-1.7,1.52)$) {\statefile{STATE.md}};
+\node[align=center, figsmall] at ($(right.center)+(0,-2.03)$) {work compounds\\the loop resumes};
+
+\draw[figflow, line width=1.35pt] (left.east) -- node[above, figsmall, fill=white, inner sep=1.5pt] {persist state} (right.west);
+\end{tikzpicture}
+\caption{A session can end without erasing the work state. That is the core operational promise.}
+\label{fig:intro-state-gap}
+\end{figure}

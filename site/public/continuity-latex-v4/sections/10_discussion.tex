@@ -1,0 +1,20 @@
+
+\section{Discussion and Limits}
+
+\input{figures/fig_positioning_map}
+
+\subsection{Why Markdown remains the default}
+
+Markdown is still the right starting substrate because it is inspectable, diffable, portable, and already understood by current coding agents. It also fails gracefully: when a file is wrong, a human can repair it with a text editor.
+
+\subsection{Why Continuity is not just \RAG{} or a memory database}
+
+\RAG{} retrieves possibly relevant material. CONTINUITY records mutable operational truth: what is currently true, what is next, and what evidence exists. Memory databases can complement that layer, but they do not remove the need for explicit state artifacts that humans can review.
+
+\subsection{Why Continuity is not an agent runtime}
+
+The repository cannot schedule workers, enforce permissions, or guarantee isolation by itself. Continuity is a control surface and a persistence convention. Runtime discipline still lives in the surrounding toolchain.
+
+\subsection{Main limitation}
+
+The design can collapse into paperwork. If the files become ceremonial, overlong, or stale, the system turns into a liability. That is why the paper repeatedly returns to one constraint: the defensible system is the smallest one that still preserves continuity.

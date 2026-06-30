@@ -1,0 +1,21 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[every node/.style={figlabel}, box/.style={figbox, minimum width=2.85cm, minimum height=.92cm, align=center}]
+\path[figpanel] (-1.25,-3.45) rectangle (8.65,3.05);
+\node[figtitle, anchor=west] at (-0.8,2.55) {ARTIFACT CLASSES};
+\node[box,fill=BitBlue!10,draw=BitBlue!65] (boot) at (0,1.55) {Boot};
+\node[box,fill=BitTeal!10,draw=BitTeal!70] (state) at (3.7,1.55) {State};
+\node[box,fill=BitGold!14,draw=BitGold!76!black] (task) at (7.4,1.55) {Task};
+\node[box,fill=BitRose!10,draw=BitRose!62] (hist) at (0,-0.35) {History};
+\node[box,fill=BitBlue!7,draw=BitBlue!62] (mem) at (3.7,-0.35) {Memory};
+\node[box,fill=BitTeal!7,draw=BitTeal!67] (safe) at (7.4,-0.35) {Safety};
+\node[box,fill=BitGray,draw=BitSlate!65] (run) at (0,-2.25) {Runtime};
+\node[box,fill=BitGray,draw=BitSlate!65] (art) at (3.7,-2.25) {Artifacts};
+\node[box,fill=BitGray,draw=BitSlate!65] (cap) at (7.4,-2.25) {Capabilities};
+\draw[decorate,decoration={brace,amplitude=5pt},BitSlate] (-0.85,2.22) -- (8.25,2.22) node[midway,above=7pt,figsmall] {hot path};
+\draw[decorate,decoration={brace,amplitude=5pt},BitSlate] (-0.85,-2.92) -- (8.25,-2.92) node[midway,below=7pt,figsmall] {cold path};
+\end{tikzpicture}
+\caption{Classes are distinguished by how they load and how they change, not only by topic.}
+\label{fig:grammar-ontology}
+\end{figure}

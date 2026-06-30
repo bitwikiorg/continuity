@@ -1,0 +1,19 @@
+
+\begin{table}[H]
+\centering
+\caption{Recent negative evidence translated into design constraints.}
+\label{tab:negative-constraints}
+\footnotesize
+\rowcolors{2}{BitGray}{white}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{2.15cm}>{\raggedright\arraybackslash}p{4.35cm}X}
+\rowcolor{BitNavy!8}
+\textbf{Observed risk} & \textbf{Practical meaning} & \textbf{CONTINUITY response} \\
+Context bloat & too much low-signal text enters the live prompt & root budgets, scoped loading, archives off the hot path \\
+Conflicting instructions & multiple files tell the agent incompatible things & lints, review, parent-child safety checks \\
+Stale state & current files lag behind repository reality & post-action reconciliation and freshness checks \\
+False completion & tasks marked done without proof & artifact requirement and review links \\
+Soft policy failure & prose alone cannot enforce critical rules & hooks, tests, permissions, sandboxing \\
+Generated noise & LLM-written summaries become canonical too early & promotion only after review \\
+Multi-agent collision & overlapping edits create duplicate or inconsistent work & claims, branch isolation, merge checks \\
+\end{tabularx}
+\end{table}

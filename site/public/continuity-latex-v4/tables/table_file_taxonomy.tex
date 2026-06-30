@@ -1,0 +1,20 @@
+
+\begin{table}[H]
+\centering
+\caption{CONTINUITY artifact classes. The key distinction is between what loads by default and what stays cold until needed.}
+\label{tab:file-taxonomy}
+\small
+\rowcolors{2}{BitGray}{white}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{1.55cm}>{\raggedright\arraybackslash}p{3.05cm}>{\raggedright\arraybackslash}p{1.9cm}>{\raggedright\arraybackslash}p{1.75cm}X}
+\rowcolor{BitNavy!8}
+\textbf{Class} & \textbf{Examples} & \textbf{Mutability} & \textbf{Default load} & \textbf{Function} \\
+Boot & \statefile{AGENTS.md}, \statefile{BOOT.md} & rare edits & yes & startup logic, norms, governance \\
+State & \statefile{STATE.md}, \statefile{CONTEXT.md} & overwrite & scoped & current project truth \\
+Task & \statefile{TODO.md}, \statefile{TASKS.md} & frequent & scoped & executable queue and ownership \\
+Memory & \statefile{MEMORY.md}, \statefile{LEARNINGS.md} & curated & selective & durable facts and distilled lessons \\
+History & \file{completed/}, \file{snapshots/} & append-only & no & evidence and prior states \\
+Safety & \statefile{CHECKPOINT.md}, \statefile{WARNING.md} & stable & yes & approvals and hazard notes \\
+Runtime & \file{claims/}, \file{runs/} & structured & per run & activity trace and coordination \\
+Artifacts & \file{artifacts/}, \file{reviews/} & append or curated & no & logs, plots, outputs, review records \\
+\end{tabularx}
+\end{table}

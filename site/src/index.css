@@ -1,0 +1,50 @@
+* {
+  border-color: var(--color-border, currentColor);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background-color: var(--color-accent-9);
+  color: var(--color-accent-contrast);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-inset);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-7);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-8);
+}
+
+/* Scroll margin for anchored sections (header 56px + navbar ~44px + breathing room) */
+section[id] {
+  scroll-margin-top: 120px;
+}
+
+/* Dark mode SVG text readability */
+.dark svg text {
+  fill: var(--color-fg-secondary);
+}
+
+/* Ensure light mode SVG text stays readable */
+svg text {
+  fill: var(--color-fg);
+}

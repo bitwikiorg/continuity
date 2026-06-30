@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Memory Index",
+  "type": "object",
+  "required": [
+    "version",
+    "entries"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "uid",
+          "namespace",
+          "topic",
+          "path",
+          "priority",
+          "status"
+        ],
+        "properties": {
+          "uid": {
+            "type": "string",
+            "pattern": "^mem-"
+          },
+          "namespace": {
+            "enum": [
+              "semantic",
+              "procedural",
+              "episodic",
+              "working"
+            ]
+          },
+          "topic": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "priority": {
+            "enum": [
+              "P0",
+              "P1",
+              "P2",
+              "P3"
+            ]
+          },
+          "status": {
+            "enum": [
+              "stable",
+              "draft",
+              "stale",
+              "archived"
+            ]
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "provenance": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "retention": {
+            "enum": [
+              "permanent",
+              "long",
+              "medium",
+              "ephemeral"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

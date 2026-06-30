@@ -1,0 +1,27 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[every node/.style={figlabel}, agent/.style={figbox, minimum width=2.7cm, minimum height=.82cm, align=center}]
+\path[figpanel] (-6.5,-3.3) rectangle (6.5,3.15);
+\node[figtitle, anchor=west] at (-6.05,2.72) {FILESYSTEM BLACKBOARD};
+\node[neutralbox, minimum width=5.5cm, minimum height=4.65cm] (board) at (0,-0.1) {};
+\node[anchor=north, font=\sffamily\bfseries\normalsize] at ($(board.north)+(0,-0.28)$) {Shared repository surface};
+\node[taskbox, minimum width=3.55cm, minimum height=.72cm] (tasks) at (0,1.25) {\statefile{TASKS.md}};
+\node[neutralbox, minimum width=3.55cm, minimum height=.72cm] (claims) at (0,0.35) {\file{claims/}};
+\node[statebox, minimum width=3.55cm, minimum height=.72cm] (state) at (0,-0.55) {\statefile{STATE.md}};
+\node[histbox, minimum width=3.55cm, minimum height=.72cm] (art) at (0,-1.45) {\file{artifacts/} and \file{reviews/}};
+
+\node[agent] (planner) at (-5.0,1.7) {Planner};
+\node[agent] (impl) at (-5.0,-0.35) {Implementer};
+\node[agent] (tester) at (5.0,1.0) {Tester};
+\node[agent] (reviewer) at (5.0,-1.15) {Reviewer};
+\draw[figarrow] (planner.east) -- (tasks.west);
+\draw[figarrow] (impl.east) -- (claims.west);
+\draw[figarrow] (tester.west) -- (state.east);
+\draw[figarrow] (reviewer.west) -- (art.east);
+\draw[dashed, BitSlate!85] (impl.east) .. controls +(.9,.7) and +(-.9,.18) .. (tasks.west);
+\draw[dashed, BitSlate!85] (tester.west) .. controls +(-.9,.72) and +(.9,.15) .. (art.east);
+\end{tikzpicture}
+\caption{Agents coordinate through a shared file surface. Locks, permissions, and scheduling still live outside the files themselves.}
+\label{fig:multi-agent-blackboard}
+\end{figure}

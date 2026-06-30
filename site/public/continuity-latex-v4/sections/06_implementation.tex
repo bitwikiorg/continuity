@@ -1,0 +1,44 @@
+
+\section{Implementation Blueprint}
+
+\input{figures/fig_enforcement_stack}
+
+A practical Continuity implementation has two layers. The first layer is human-readable Markdown or YAML front matter. The second layer is deterministic validation.
+
+\subsection{Example file header}
+
+\begin{lstlisting}
+---
+continuity_type: state
+scope: repository
+loads_on: boot
+mutability: overwrite-current
+updates_after:
+  - architecture_change
+  - task_completion
+  - failed_assumption
+validation:
+  - max_lines: 180
+  - no_unresolved_placeholders
+  - no_conflicting_status
+---
+\end{lstlisting}
+
+\subsection{Hooks and validators}
+
+A useful implementation should provide at least five checks.
+\begin{enumerate}
+  \item \textbf{Pre-load budget checks} stop archive files or oversized manifests from loading by default.
+  \item \textbf{Pre-action scope checks} verify that the agent has loaded the nearest relevant state chain.
+  \item \textbf{Post-action reconciliation checks} flag when code changed but \statefile{STATE.md} or \statefile{TODO.md} did not.
+  \item \textbf{Artifact checks} reject task completion without evidence links, test output, or commits.
+  \item \textbf{Safety checks} detect nested files that weaken parent safety rules.
+\end{enumerate}
+
+\subsection{Promotion rules}
+
+Generated state should not become canonical automatically. A run summary written by an agent can seed \file{LEARNINGS.md} or \file{completed/}, but promotion into \statefile{STATE.md} or repository-wide memory should pass through review, linting, and freshness checks.
+
+\subsection{Why this layer matters}
+
+The implementation layer prevents the central category error of the whole topic: confusing readable text with reliable control. Continuity is strongest when the repository shows the state and the surrounding tooling checks that the state still makes sense.

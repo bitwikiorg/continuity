@@ -1,0 +1,58 @@
+
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+  \fill[BitNavy] (current page.south west) rectangle (current page.north east);
+
+  % blueprint field
+  \foreach \x in {-18,...,18} {
+    \foreach \y in {-26,...,26} {
+      \fill[BitSlate!32,opacity=.18] ($(current page.center)+(\x*0.62,\y*0.62)$) circle (0.022);
+    }
+  }
+
+  % left title rail
+  \fill[BitRose] ($(current page.north west)+(1.35cm,-1.65cm)$) rectangle ++(6pt,-1.95cm);
+  \node[anchor=north west, align=left, text=white] at ($(current page.north west)+(1.75cm,-1.62cm)$) {
+    {\sffamily\bfseries\fontsize{31}{34}\selectfont CONTINUITY}\\[7pt]
+    {\sffamily\fontsize{15}{18}\selectfont Repository-native state-as-code for persistent AI coding agents}\\[12pt]
+    {\sffamily\small\color{BitTeal!95!white}BITwiki Research \textbullet\ Systems paper \textbullet\ June 2026}
+  };
+
+  % thesis image
+  \coordinate (C) at ($(current page.center)+(0,-0.55cm)$);
+  \draw[BitBlue!28,line width=2.3pt] ($(C)+(-5.15,0)$) -- ($(C)+(5.15,0)$);
+  \foreach \x/\lab in {-4.15/{session 1},-2.05/{session 2},2.05/{session 3},4.15/{session 4}} {
+    \fill[BitBlue!38] ($(C)+(\x,0)$) circle (0.22cm);
+    \draw[BitTeal!78,line width=0.8pt] ($(C)+(\x,0)$) circle (0.22cm);
+    \node[text=BitSlate!28!white,font=\sffamily\scriptsize] at ($(C)+(\x,-0.56)$) {\lab};
+  }
+
+  % file glyph
+  \foreach \r/\op in {1.55/.58,2.35/.34,3.25/.18} {
+    \draw[BitTeal!74,opacity=\op,line width=1.0pt] ($(C)+(0,0)$) circle (\r cm);
+  }
+  \begin{scope}[shift={(C)}]
+    \fill[BitBlue!24] (-0.76,-0.98) rectangle (0.76,0.98);
+    \draw[BitTeal!82,line width=1.15pt] (-0.76,-0.98) rectangle (0.76,0.98);
+    \draw[BitTeal!82,line width=1.15pt] (0.31,0.98) -- (0.76,0.55) -- (0.31,0.55) -- cycle;
+    \draw[white!74,line width=0.7pt] (-0.45,0.25) -- (0.42,0.25);
+    \draw[white!74,line width=0.7pt] (-0.45,0.03) -- (0.35,0.03);
+    \draw[white!74,line width=0.7pt] (-0.45,-0.19) -- (0.43,-0.19);
+    \node[text=white,font=\sffamily\bfseries\small] at (0,-1.42) {STATE.md};
+  \end{scope}
+
+  % thesis line
+  \node[anchor=north, text=white, align=center] at ($(C)+(0,-3.95)$) {
+    {\sffamily\bfseries\Large The runtime ends. The state remains.}\\[6pt]
+    {\sffamily\small\color{BitSlate!22!white}Current truth, tasks, lessons, and evidence survive as versioned files.}
+  };
+
+  % bottom meta
+  \node[anchor=south west, align=left, text=white] at ($(current page.south west)+(1.75cm,1.55cm)$) {
+    {\sffamily\bfseries\small Alejandro Capote \textbullet\ BITwiki}\\[2pt]
+    {\sffamily\small\color{BitSlate!35!white}github.com/bitwikiorg/continuity}
+  };
+\end{tikzpicture}
+\mbox{}
+\end{titlepage}

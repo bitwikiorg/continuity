@@ -1,0 +1,18 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[every node/.style={figlabel}]
+\path[figpanel] (-0.75,-0.8) rectangle (7.75,5.3);
+\node[figtitle, anchor=west] at (-0.3,4.85) {POSITIONING};
+\draw[->, thick, BitSlate!85] (0,0) -- (7.0,0) node[right, figsmall] {explicit current truth};
+\draw[->, thick, BitSlate!85] (0,0) -- (0,4.55) node[above,align=center, figsmall] {human\\reviewability};
+\draw[BitLine] (0,2.25) -- (6.65,2.25);
+\draw[BitLine] (3.45,0) -- (3.45,4.25);
+\node[livebox, minimum width=2.95cm, minimum height=1.0cm, font=\sffamily\bfseries] at (4.9,3.4) {CONTINUITY};
+\node[neutralbox, minimum width=2.45cm, minimum height=.88cm] at (1.75,2.95) {RAG};
+\node[neutralbox, minimum width=2.8cm, minimum height=.88cm] at (1.85,0.95) {Vector memory};
+\node[neutralbox, minimum width=2.8cm, minimum height=.88cm] at (5.0,1.15) {Agent runtime};
+\end{tikzpicture}
+\caption{CONTINUITY occupies a narrower niche than retrieval and orchestration layers.}
+\label{fig:positioning-map}
+\end{figure}

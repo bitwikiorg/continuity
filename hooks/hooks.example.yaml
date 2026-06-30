@@ -1,0 +1,24 @@
+# Continuity hooks configuration
+# Copy to your workspace and customize. Use with a file watcher (entr, watchexec, inotifywait).
+
+watch:
+  - file: STATE.md
+    on_change:
+      - append: logs/events.jsonl
+      - webhook: ${CONTINUITY_STATE_WEBHOOK}
+
+  - file: TODO.md
+    on_done:
+      - move_to: completed/
+      - append: logs/events.jsonl
+
+  - file: SNAPSHOT.md
+    on_change:
+      - append: logs/events.jsonl
+      - notify: ${CONTINUITY_NOTIFY_ENDPOINT}
+
+# Rules
+rules:
+  - do_not_write_secrets_to_markdown
+  - require_checkpoint_before_irreversible_actions
+  - safety_inheritance: child_must_not_weaken_parent

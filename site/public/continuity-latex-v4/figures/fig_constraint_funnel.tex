@@ -1,0 +1,18 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[every node/.style={figlabel}]
+\path[figpanel] (-0.7,-0.65) rectangle (8.65,5.15);
+\fill[BitBlue!4] (0,0) rectangle (3.6,4.35);
+\fill[BitRose!4] (3.6,0) rectangle (8.1,4.35);
+\draw[->, thick, BitSlate!85] (0,0) -- (8.25,0) node[right, figsmall] {loaded context};
+\draw[->, thick, BitSlate!85] (0,0) -- (0,4.45) node[above left, align=center, figsmall] {task\\success};
+\draw[BitBlue, line width=2.1pt, domain=.45:8.0, samples=90, smooth] plot (\x,{3.75*exp(-0.16*(\x-3.6)*(\x-3.6))+0.45});
+\draw[dashed, BitSlate] (3.6,0) -- (3.6,4.05);
+\node[statebox, minimum width=2.35cm, minimum height=.62cm, font=\sffamily\scriptsize\bfseries] at (3.6,4.35) {minimal scoped state};
+\node[align=center, figsmall] at (1.2,0.8) {too little\\context};
+\node[align=center, figsmall] at (6.95,0.8) {bloat, conflict,\\higher cost};
+\end{tikzpicture}
+\caption{The design hypothesis is an inverted U: some state helps, but unscoped context becomes harmful.}
+\label{fig:constraint-funnel}
+\end{figure}

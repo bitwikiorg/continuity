@@ -1,0 +1,34 @@
+
+\section{Artifact Grammar}
+
+\input{figures/fig_grammar_ontology}
+
+\input{figures/fig_monolith_mesh}
+
+CONTINUITY organizes repository artifacts into classes with different mutability and load rules. That distinction matters. When current state, historical notes, and reusable knowledge collapse into the same file, the result is usually drift or bloat. In this paper, upper-case filenames such as \statefile{STATE.md} denote the live state layer, while lower-case paths such as \file{completed/} and \file{artifacts/} denote history or evidence stores.
+
+\input{tables/table_file_taxonomy}
+
+\subsection{Core terms}
+
+\begin{description}[leftmargin=2.6cm,style=nextline]
+  \item[Repository-native state] Project state stored inside the repository rather than inside hidden platform memory.
+  \item[Current truth] The smallest accurate description of what is true right now.
+  \item[State reconciliation] Updating state artifacts after code, tests, or decisions change.
+  \item[Scoped loading] Resolving only the manifest, state, and task files relevant to the current path.
+  \item[Semantic history] Append-only records organized by meaning: completed work, reviews, evidence, and snapshots.
+  \item[Soft constraint] A model-visible instruction that is not technically enforced.
+  \item[Hard constraint] A rule enforced by hooks, tests, permissions, schemas, or human approval.
+\end{description}
+
+\subsection{Minimal core versus template library}
+
+The paper defends a \term{minimal reference core}, not the largest possible template set. A repository that only needs \statefile{AGENTS.md}, \statefile{STATE.md}, and \statefile{TODO.md} should not be pressured into creating ten more files. The extended topology is valuable as a library of patterns. It is not a proof that every pattern should be loaded.
+
+\input{figures/fig_minimal_core}
+
+\subsection{State, history, and knowledge are different objects}
+
+Current state is overwritten. History accumulates. Knowledge is distilled. The operational grammar depends on keeping those three objects separate.
+
+\input{figures/fig_state_history_knowledge}

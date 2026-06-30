@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="600" height="300">
+  <style>
+    .bg { fill: #0d1117; }
+    .cb { fill: #1c2128; stroke: #f85149; stroke-width: 2; }
+    .fb { fill: #161b22; stroke: #30363d; stroke-width: 1; }
+    .t { fill: #f0f6fc; font-family: sans-serif; font-size: 14px; font-weight: 700; }
+    .f { fill: #c9d1d9; font-family: monospace; font-size: 11px; }
+    .d { fill: #8b949e; font-family: sans-serif; font-size: 10px; }
+    .lc { fill: #3fb950; font-family: sans-serif; font-size: 11px; font-weight: 600; }
+    .ph { fill: #58a6ff; font-family: sans-serif; font-size: 10px; }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #fff; }
+      .cb { fill: #ffebee; stroke: #cf222e; }
+      .fb { fill: #f6f8fa; stroke: #d0d7de; }
+      .t { fill: #1f2328; }
+      .f { fill: #1f2328; }
+      .d { fill: #656d76; }
+      .lc { fill: #1a7f37; }
+      .ph { fill: #0969da; }
+    }
+  </style>
+  <rect class="bg" width="600" height="300" rx="8"/>
+  <rect class="cb" x="20" y="20" width="260" height="200" rx="8"/>
+  <text class="t" x="150" y="45" text-anchor="middle">BINDING</text>
+  <text class="d" x="150" y="60" text-anchor="middle">Machine-readable contract</text>
+  <rect class="fb" x="40" y="75" width="220" height="22" rx="4"/>
+  <text class="f" x="50" y="91">binding_id: string</text>
+  <rect class="fb" x="40" y="102" width="220" height="22" rx="4"/>
+  <text class="f" x="50" y="118">who: { name, role, parent }</text>
+  <rect class="fb" x="40" y="129" width="220" height="22" rx="4"/>
+  <text class="f" x="50" y="145">what: { objective, criteria }</text>
+  <rect class="fb" x="40" y="156" width="220" height="22" rx="4"/>
+  <text class="f" x="50" y="172">budget: { time, tokens, depth }</text>
+  <rect class="fb" x="40" y="183" width="220" height="22" rx="4"/>
+  <text class="f" x="50" y="199">checkpoint: { type, triggers }</text>
+  <text class="lc" x="310" y="50">LIFECYCLE</text>
+  <text class="ph" x="310" y="80">POTENTIAL</text>
+  <text class="d" x="310" y="95">Latent capability</text>
+  <text class="ph" x="310" y="115">BIND</text>
+  <text class="d" x="310" y="130">Scope and authorize</text>
+  <text class="ph" x="310" y="150">RECURSE</text>
+  <text class="d" x="310" y="165">Execute sub-computations</text>
+  <text class="ph" x="310" y="180">COMPOSE</text>
+  <text class="d" x="310" y="195">Integrate results</text>
+  <text class="ph" x="310" y="210">VERIFY</text>
+  <text class="d" x="310" y="225">Checkpoint gate</text>
+  <text class="ph" x="310" y="240">PERSIST</text>
+  <text class="d" x="310" y="255">Write durable state</text>
+  <text class="ph" x="310" y="270">UNBIND</text>
+  <text class="d" x="310" y="285">Release resources</text>
+</svg>

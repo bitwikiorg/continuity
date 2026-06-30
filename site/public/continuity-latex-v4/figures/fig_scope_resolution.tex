@@ -1,0 +1,19 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[every node/.style={figlabel}, box/.style={figbox, minimum width=3.1cm, minimum height=.9cm, align=center}]
+\path[figpanel] (-1.25,-3.15) rectangle (9.25,3.0);
+\node[figtitle, anchor=west] at (-0.8,2.55) {SCOPED RESOLUTION};
+\node[box, fill=BitBlue!8, draw=BitBlue!70, line width=1.0pt] (root) at (4,1.85) {root\\\statefile{STATE.md}};
+\node[box, fill=BitGray, draw=BitLine, text=BitSlate] (pa) at (0.2,0.35) {project-a\\\statefile{STATE.md}};
+\node[box, fill=BitTeal!8, draw=BitTeal!80, line width=1.0pt] (sub) at (4,0.35) {subsystem\\\statefile{STATE.md}};
+\node[box, fill=BitGray, draw=BitLine, text=BitSlate] (pb) at (7.8,0.35) {project-b\\\statefile{STATE.md}};
+\node[box, fill=BitGold!14, draw=BitGold!80!black, line width=1.0pt] (task) at (4,-1.15) {task-42\\\statefile{STATE.md}};
+\draw[BitLine,line width=1.6pt] (root) -- (pa);
+\draw[BitLine,line width=1.6pt] (root) -- (pb);
+\draw[BitBlue,line width=2.0pt] (root) -- (sub) -- (task);
+\node[neutralbox, minimum width=8.4cm, minimum height=.92cm, align=center] at (4,-2.35) {Load the smallest sufficient state chain. Ignore unrelated branches unless the task touches them.};
+\end{tikzpicture}
+\caption{Scoped resolution follows the active branch and leaves unrelated repository state cold.}
+\label{fig:scope-resolution}
+\end{figure}

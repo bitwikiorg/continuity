@@ -1,0 +1,32 @@
+
+\section{Foundations}
+
+\input{figures/fig_literature_map}
+
+\subsection{External memory for coding agents}
+
+\input{figures/fig_context_engine}
+
+Modern \LLM{} systems are powerful precisely where their memory is weak. The context window is large but still finite, and tool-use traces quickly crowd out older information. That is why the memory literature repeatedly pushes state outside the model. MemGPT treats memory as a tiered system that shuttles information between active context and longer-term stores \cite{Packer2023MemGPT}. MemoryBank studies selective retention and memory updates over time \cite{Zhong2023MemoryBank}. Generative Agents and Reflexion both show that reusable behavior emerges when experience is written down, revisited, and distilled into higher-value summaries \cite{Park2023GenerativeAgents,Shinn2023Reflexion}. Survey work reaches the same conclusion: durable agent memory needs explicit write, manage, and read loops \cite{Wang2023LLMAgentSurvey}.
+
+CONTINUITY adopts that external-memory stance but narrows the medium. It uses repository files as the persistence layer because coding agents and developers already live there.
+
+\subsection{Repository-local manifests are already standard practice}
+
+The repository has become part of the prompt surface. Codex, Claude Code, Hermes, and OpenClaw all expose repository-local instruction or memory files \cite{OpenAICodexAgents,AnthropicClaudeMemory,HermesContextFiles,OpenClawMemory}. CONTINUITY does not need to justify that starting point. What it adds is separation of concerns. A manifest should not double as a task log; current state should not double as an archive; and evidence should not hide inside prose.
+
+\subsection{Architecture knowledge and workflow provenance}
+
+Software repositories do not store code alone. They also store design intent, constraints, decisions, tradeoffs, and evidence. Classical architecture work treats those as first-class parts of the system description \cite{PerryWolf1992,Kruchten1995,TyreeAkerman2005,JansenBosch2005,ISO42010}. Empirical studies show that architecture knowledge often ends up scattered through ordinary development artifacts, including issue trackers \cite{Soliman2021AK}. Reproducibility and provenance work make the same demand from another angle: important work should be reconstructable from inputs, actions, outputs, and version history \cite{Wilson2017GoodEnough,W3CPROV,SoilandReyes2022ROCrate,Murta2014NoWorkflow}.
+
+CONTINUITY places a lightweight state layer on top of those ideas. \statefile{STATE.md} captures what is true now. \file{completed/} and \file{artifacts/} capture what happened and what proves it.
+
+\subsection{Coordination depends on shared artifacts}
+
+Multi-agent work needs more than messaging. It needs a shared place where partial results, task claims, and review outcomes can be seen by others. Blackboard systems, the Contract Net Protocol, Linda tuple spaces, and the actor model all offer variants of that idea \cite{Corkill1991Blackboard,Smith1980ContractNet,Gelernter1985Linda,Hewitt1973Actor}. Recent multi-agent \LLM{} systems make the same move through role separation and explicit task exchange \cite{Wu2023AutoGen,Li2023CAMEL,Hong2023MetaGPT}. \CSCW{} and distributed cognition explain why this works: coordination improves when knowledge is externalized into inspectable artifacts \cite{Hutchins1995,Kirsh1995,Wegner1985,SchmidtSimone1996}.
+
+CONTINUITY uses the repository as that shared surface. It is a blackboard by convention, not by runtime.
+
+\subsection{Security limits the whole design}
+
+Every file that enters context becomes part of the instruction boundary. Indirect prompt injection, prompt theft, and over-permissioned agent workflows all exploit that boundary \cite{Greshake2023Indirect,Liu2023HouYi,OWASPLLMTop10,SLSA}. CONTINUITY therefore treats Markdown as a soft interface. The enforcement layer lives elsewhere: hooks, schemas, permissions, tests, and review.

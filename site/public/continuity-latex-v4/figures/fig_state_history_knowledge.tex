@@ -1,0 +1,15 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[every node/.style={figlabel}, card/.style={figbox, minimum width=3.55cm, minimum height=2.65cm, align=left, inner sep=9pt}]
+\path[figpanel] (-1.0,-2.1) rectangle (10.35,2.15);
+\node[figtitle, anchor=west] at (-0.55,1.72) {THREE OBJECTS};
+\node[card, fill=BitTeal!10, draw=BitTeal!72] (state) at (0,0) {\textbf{STATE}\\[4pt]\figsmall where: root files\\example: \statefile{STATE.md}\\mutability: overwrite\\answers: what is true now};
+\node[card, fill=BitRose!10, draw=BitRose!62] (hist) at (4.7,0) {\textbf{HISTORY}\\[4pt]\figsmall where: directories\\example: \file{completed/}\\mutability: append\\answers: what happened};
+\node[card, fill=BitBlue!10, draw=BitBlue!62] (lib) at (9.4,0) {\textbf{LIBRARY}\\[4pt]\figsmall where: curated files\\example: \file{memory/}\\mutability: revise\\answers: what is known};
+\draw[figarrow] (state.east) -- (hist.west);
+\draw[figarrow] (hist.east) -- (lib.west);
+\end{tikzpicture}
+\caption{Current truth, history, and reusable knowledge should not collapse into one file.}
+\label{fig:state-history-knowledge}
+\end{figure}

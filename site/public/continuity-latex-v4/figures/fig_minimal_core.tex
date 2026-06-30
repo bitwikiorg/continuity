@@ -1,0 +1,22 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[every node/.style={figlabel}, box/.style={figbox, align=left, minimum width=3.8cm, minimum height=.88cm, inner sep=7pt}]
+\path[figpanel] (-2.0,-0.95) rectangle (12.1,3.1);
+\node[figtitle, anchor=west] at (-1.55,2.68) {MINIMAL CORE};
+\node[font=\sffamily\bfseries\small, text=BitSlate] at (0,2.25) {LIVE STATE};
+\node[font=\sffamily\bfseries\small, text=BitSlate] at (5.0,2.25) {MEMORY};
+\node[font=\sffamily\bfseries\small, text=BitSlate] at (10.0,2.25) {HISTORY AND EVIDENCE};
+
+\node[box, fill=BitBlue!8, draw=BitBlue!65] at (0,1.4) {\statefile{AGENTS.md}\\\figsmall boot rules};
+\node[box, fill=BitTeal!8, draw=BitTeal!70] at (0,0.2) {\statefile{STATE.md}\\\figsmall current truth};
+\node[box, fill=BitGold!14, draw=BitGold!76!black] at (0,-1.0) {\statefile{TODO.md}\\\figsmall active queue};
+\node[box, fill=BitBlue!8, draw=BitBlue!65] at (5.0,1.4) {\statefile{LEARNINGS.md}\\\figsmall reusable lessons};
+\node[box, fill=BitTeal!8, draw=BitTeal!70] at (5.0,0.2) {\statefile{MEMORY.md}\\\figsmall durable facts};
+\node[box, fill=BitRose!10, draw=BitRose!62] at (10.0,1.4) {\file{completed/}\\\figsmall finished work};
+\node[box, fill=BitGray, draw=BitSlate!65] at (10.0,0.2) {\file{snapshots/}\\\figsmall recovery points};
+\node[box, fill=BitGray, draw=BitSlate!65] at (10.0,-1.0) {\file{artifacts/}\\\figsmall evidence};
+\end{tikzpicture}
+\caption{The minimal core separates live state from archival material. Upper-case filenames denote the live state files.}
+\label{fig:minimal-core}
+\end{figure}

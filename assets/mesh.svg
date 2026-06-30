@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="600" height="350">
+  <style>
+    .bg { fill: #0d1117; }
+    .node { fill: #1c2128; stroke: #58a6ff; stroke-width: 1.5; }
+    .dir { fill: #161b22; stroke: #d29922; stroke-width: 1.5; }
+    .label { fill: #c9d1d9; font-family: sans-serif; font-size: 11px; font-weight: 600; }
+    .dlabel { fill: #d29922; font-family: sans-serif; font-size: 10px; }
+    .edge { stroke: #30363d; stroke-width: 1.5; }
+    .mesh-edge { stroke: #f85149; stroke-width: 1.5; stroke-dasharray: 4 3; fill: none; }
+    .note { fill: #8b949e; font-family: sans-serif; font-size: 10px; }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #fff; }
+      .node { fill: #ddf4ff; stroke: #0969da; }
+      .dir { fill: #fff8c5; stroke: #bf8700; }
+      .label { fill: #1f2328; }
+      .dlabel { fill: #7d4e00; }
+      .edge { stroke: #d0d7de; }
+      .mesh-edge { stroke: #cf222e; }
+      .note { fill: #656d76; }
+    }
+  </style>
+  <rect class="bg" width="600" height="350" rx="8"/>
+  <rect class="node" x="50" y="30" width="130" height="40" rx="6"/>
+  <text class="label" x="115" y="55" text-anchor="middle">STATE.md</text>
+  <rect class="dir" x="50" y="120" width="130" height="30" rx="4"/>
+  <text class="dlabel" x="115" y="140" text-anchor="middle">snapshots/</text>
+  <rect class="dir" x="50" y="160" width="130" height="30" rx="4"/>
+  <text class="dlabel" x="115" y="180" text-anchor="middle">audits/</text>
+  <rect class="dir" x="50" y="200" width="130" height="30" rx="4"/>
+  <text class="dlabel" x="115" y="220" text-anchor="middle">artifacts/</text>
+  <line class="edge" x1="115" y1="70" x2="115" y2="120"/>
+  <line class="edge" x1="115" y1="70" x2="115" y2="160"/>
+  <line class="edge" x1="115" y1="70" x2="115" y2="200"/>
+  <rect class="node" x="250" y="30" width="130" height="40" rx="6"/>
+  <text class="label" x="315" y="55" text-anchor="middle">TODO.md</text>
+  <rect class="dir" x="250" y="120" width="130" height="30" rx="4"/>
+  <text class="dlabel" x="315" y="140" text-anchor="middle">completed/</text>
+  <line class="edge" x1="315" y1="70" x2="315" y2="120"/>
+  <rect class="node" x="450" y="30" width="130" height="40" rx="6"/>
+  <text class="label" x="515" y="55" text-anchor="middle">LEARNINGS.md</text>
+  <rect class="dir" x="450" y="120" width="130" height="30" rx="4"/>
+  <text class="dlabel" x="515" y="140" text-anchor="middle">reflections/</text>
+  <line class="edge" x1="515" y1="70" x2="515" y2="120"/>
+  <path class="mesh-edge" d="M 515 70 Q 300 100 180 160"/>
+  <path class="mesh-edge" d="M 515 70 Q 400 100 315 120"/>
+  <text class="note" x="300" y="280" text-anchor="middle">Dashed red = mesh edges (many-to-many)</text>
+  <text class="note" x="300" y="300" text-anchor="middle">LEARNINGS.md indexes audits/ AND completed/</text>
+  <text class="note" x="300" y="320" text-anchor="middle">One entry, multiple state files</text>
+</svg>

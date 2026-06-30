@@ -1,0 +1,18 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[every node/.style={figlabel,align=center}, cell/.style={figbox, minimum width=2.85cm, minimum height=.95cm}]
+\path[figpanel] (-1.1,-0.95) rectangle (11.0,2.55);
+\node[figtitle, anchor=west] at (-0.65,2.08) {EVALUATION};
+\node[cell, fill=BitGray] at (0.4,1.15) {Baseline};
+\node[cell, fill=BitBlue!8, draw=BitBlue!65] at (3.45,1.15) {Manifest only};
+\node[cell, fill=BitTeal!8, draw=BitTeal!70] at (6.5,1.15) {Minimal core};
+\node[cell, fill=BitRose!10, draw=BitRose!62] at (9.55,1.15) {Bloated / stale};
+\node[cell] at (0.4,-0.1) {success\\cost};
+\node[cell] at (3.45,-0.1) {instruction\\fit};
+\node[cell] at (6.5,-0.1) {restart\\drift};
+\node[cell] at (9.55,-0.1) {failure\\modes};
+\end{tikzpicture}
+\caption{The evaluation should compare useful state, no state, and harmful state.}
+\label{fig:evaluation-matrix}
+\end{figure}

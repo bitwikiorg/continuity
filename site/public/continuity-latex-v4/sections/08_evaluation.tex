@@ -1,0 +1,28 @@
+
+\section{Evaluation Agenda}
+
+\input{figures/fig_evaluation_matrix}
+
+The right evaluation target is not "does any context file help?" The right target is narrower: under what conditions does a compact, validated state layer improve repository work, and when does it become overhead?
+
+\subsection{Conditions}
+
+The core conditions are baseline (no repository state), manifest-only, minimal Continuity, minimal Continuity with hooks, full topology, and failure modes such as stale state, bloated context, and conflicting local instructions.
+
+\subsection{Benchmarks and tasks}
+
+Existing repository benchmarks such as \SWEbench{} remain useful for patch correctness \cite{Jimenez2024SWEbench}. They do not, however, measure resumption, repeated-error avoidance, or multi-agent collision. CONTINUITY therefore needs a custom task family with interruptions, stale-state traps, cross-branch handoffs, and malicious or noisy context.
+
+\subsection{Metrics}
+
+\input{tables/table_evaluation_metrics}
+
+The most interesting metrics are often not the headline ones. Task success matters, but so do resumption latency, repeated-error rate, evidence completeness, human review time, and collision frequency.
+
+\subsection{Ablations}
+
+Ablations should remove \statefile{STATE.md}, \statefile{TODO.md}, \statefile{LEARNINGS.md}, scoped loading, evidence requirements, and validation hooks. Additional ablations should intentionally inject context bloat, stale facts, and local instruction conflicts.
+
+\subsection{Expected shape of the results}
+
+The expected positive result is modest: faster restarts, better handoff, cleaner audit trails, and fewer repeated failures. The expected negative result is equally important: larger context topologies should cost more and may perform worse. A credible paper should publish both.

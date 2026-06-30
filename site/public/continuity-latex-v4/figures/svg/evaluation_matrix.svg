@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="100%" height="100%" fill="white"/>
+<text x="80" y="80" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" fill="#111827" text-anchor="start">Evaluation matrix</text>
+<rect x="170" y="170" width="210" height="90" rx="8" fill="#F6F8FB" stroke="#111827" stroke-width="2"/>
+<text x="275" y="225" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#111827" text-anchor="middle">Baseline</text>
+<rect x="170" y="300" width="210" height="120" rx="8" fill="white" stroke="#111827" stroke-width="2"/>
+<text x="275" y="348" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">success</text>
+<text x="275" y="386" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">cost</text>
+<rect x="430" y="170" width="210" height="90" rx="8" fill="#F6F8FB" stroke="#111827" stroke-width="2"/>
+<text x="535" y="225" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#111827" text-anchor="middle">Manifest only</text>
+<rect x="430" y="300" width="210" height="120" rx="8" fill="white" stroke="#111827" stroke-width="2"/>
+<text x="535" y="348" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">instruction</text>
+<text x="535" y="386" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">fit</text>
+<rect x="690" y="170" width="210" height="90" rx="8" fill="#F6F8FB" stroke="#111827" stroke-width="2"/>
+<text x="795" y="225" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#111827" text-anchor="middle">Minimal core</text>
+<rect x="690" y="300" width="210" height="120" rx="8" fill="white" stroke="#111827" stroke-width="2"/>
+<text x="795" y="348" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">restart</text>
+<text x="795" y="386" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">drift</text>
+<rect x="950" y="170" width="210" height="90" rx="8" fill="#F6F8FB" stroke="#111827" stroke-width="2"/>
+<text x="1055" y="225" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#111827" text-anchor="middle">Bloated / stale</text>
+<rect x="950" y="300" width="210" height="120" rx="8" fill="white" stroke="#111827" stroke-width="2"/>
+<text x="1055" y="348" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">failure</text>
+<text x="1055" y="386" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">modes</text>
+</svg>

@@ -1,0 +1,31 @@
+
+\section{Appendix A: Minimal file templates}
+
+\subsection*{Example \file{STATE.md}}
+\begin{lstlisting}
+# State
+
+## System summary
+Authentication service uses OAuth 2.1 with PKCE. Token refresh is server side.
+
+## What changed recently
+- Callback validation moved into auth middleware.
+- Legacy refresh endpoint is deprecated but still present.
+
+## Active constraints
+- Do not change the token schema without migration notes.
+- Any auth flow change requires integration tests.
+
+## Next reconciliation point
+Update after the current callback test suite finishes.
+\end{lstlisting}
+
+\subsection*{Example \file{TODO.md}}
+\begin{lstlisting}
+- [in-progress] Add callback replay protection
+  owner: implementer-02
+  evidence: artifacts/auth/replay-tests.txt
+
+- [open] Remove legacy refresh endpoint after migration note lands
+  dependency: callback replay protection
+\end{lstlisting}

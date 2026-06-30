@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#556278"/></marker></defs>
+<text x="80" y="80" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" fill="#111827" text-anchor="start">Evaporation vs. compounding</text>
+<rect x="100" y="140" width="380" height="440" rx="8" fill="white" stroke="#111827" stroke-width="2"/>
+<rect x="720" y="140" width="380" height="440" rx="8" fill="#EAF7FF" stroke="#111827" stroke-width="2"/>
+<text x="290" y="190" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#111827" text-anchor="middle">Without CONTINUITY</text>
+<text x="910" y="190" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#111827" text-anchor="middle">With CONTINUITY</text>
+<circle cx="290" cy="250" r="45" fill="none" stroke="#111827" stroke-width="3"/>
+<text x="290" y="258" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#111827" text-anchor="middle">act</text>
+<circle cx="290" cy="350" r="45" fill="none" stroke="#111827" stroke-width="3"/>
+<text x="290" y="358" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#111827" text-anchor="middle">act</text>
+<circle cx="290" cy="450" r="45" fill="none" stroke="#111827" stroke-width="3"/>
+<text x="290" y="458" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#111827" text-anchor="middle">act</text>
+<line x1="160" y1="320" x2="420" y2="320" stroke="#FF6A5B" stroke-width="6"/>
+<text x="290" y="305" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400" fill="#FF6A5B" text-anchor="middle">session boundary</text>
+<path d="M780 490 C820 370, 880 430, 900 300 C920 210, 970 260, 1000 190" fill="none" stroke="#2EA8FF" stroke-width="8"/>
+<circle cx="780" cy="490" r="10" fill="white" stroke="#2EA8FF" stroke-width="3"/>
+<circle cx="850" cy="405" r="10" fill="white" stroke="#2EA8FF" stroke-width="3"/>
+<circle cx="900" cy="300" r="10" fill="white" stroke="#2EA8FF" stroke-width="3"/>
+<circle cx="955" cy="255" r="10" fill="white" stroke="#2EA8FF" stroke-width="3"/>
+<circle cx="1000" cy="190" r="10" fill="white" stroke="#2EA8FF" stroke-width="3"/>
+<text x="910" y="535" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">work compounds</text>
+</svg>

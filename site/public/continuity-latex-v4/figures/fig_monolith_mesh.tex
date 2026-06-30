@@ -1,0 +1,25 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[every node/.style={figlabel}, filebox/.style={figbox, align=center, minimum height=.84cm}]
+\path[figpanel] (-2.7,-1.95) rectangle (10.25,3.25);
+\node[figtitle, anchor=west] at (-2.25,2.8) {TOPOLOGY};
+\node[font=\sffamily\bfseries\large, text=BitInk] at (0,2.25) {Single-file monolith};
+\node[filebox, fill=BitRose!9, draw=BitRose!62, minimum width=4.2cm, minimum height=2.2cm] (mono) at (0,0.65) {\statefile{AGENTS.md}\\[4pt]\figsmall policy + state + tasks\\history + memory};
+\node[align=center, figsmall] at (0,-1.1) {longer context\\mixed lifecycles\\harder review};
+
+\node[font=\sffamily\bfseries\large, text=BitInk] at (6.75,2.25) {CONTINUITY mesh};
+\node[filebox, fill=BitBlue!8, draw=BitBlue!65, minimum width=2.15cm] (a) at (4.75,1.35) {\statefile{AGENTS.md}};
+\node[filebox, fill=BitTeal!8, draw=BitTeal!70, minimum width=2.15cm] (s) at (6.75,0.7) {\statefile{STATE.md}};
+\node[filebox, fill=BitGold!12, draw=BitGold!76!black, minimum width=2.15cm] (t) at (8.75,1.35) {\statefile{TODO.md}};
+\node[filebox, fill=BitBlue!8, draw=BitBlue!65, minimum width=2.15cm] (m) at (4.75,0.0) {\statefile{MEMORY.md}};
+\node[filebox, fill=BitRose!10, draw=BitRose!62, minimum width=2.15cm] (h) at (8.75,0.0) {\file{completed/}};
+\draw[figarrow] (a) -- (s);
+\draw[figarrow] (t) -- (s);
+\draw[figarrow] (s) -- (h);
+\draw[figarrow] (m) -- (s);
+\node[align=center, figsmall] at (6.75,-1.1) {split by concern\\loaded by scope\\reviewed by diff};
+\end{tikzpicture}
+\caption{The mesh preserves separate lifecycles instead of forcing all agent context into one manifest.}
+\label{fig:monolith-mesh}
+\end{figure}

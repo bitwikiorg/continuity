@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="100%" height="100%" fill="white"/>
+<text x="80" y="80" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" fill="#111827" text-anchor="start">Three-class ontology</text>
+<rect x="55" y="160" width="330" height="390" rx="8" fill="#E8FAF9" stroke="#111827" stroke-width="2"/>
+<text x="85" y="220" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800" fill="#111827" text-anchor="start">STATE</text>
+<text x="85" y="285" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="start">where: root files</text>
+<text x="85" y="340" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="start">mutability: overwrite</text>
+<text x="85" y="395" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="start">answers: what is</text>
+<rect x="435" y="160" width="330" height="390" rx="8" fill="#FFF0F0" stroke="#111827" stroke-width="2"/>
+<text x="465" y="220" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800" fill="#111827" text-anchor="start">HISTORY</text>
+<text x="465" y="285" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="start">where: directories</text>
+<text x="465" y="340" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="start">mutability: append</text>
+<text x="465" y="395" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="start">answers: what was</text>
+<rect x="815" y="160" width="330" height="390" rx="8" fill="#EAF7FF" stroke="#111827" stroke-width="2"/>
+<text x="845" y="220" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="800" fill="#111827" text-anchor="start">LIBRARY</text>
+<text x="845" y="285" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="start">where: curated files</text>
+<text x="845" y="340" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="start">mutability: revise</text>
+<text x="845" y="395" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="start">answers: what is known</text>
+</svg>

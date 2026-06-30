@@ -1,0 +1,64 @@
+# CONTINUITY
+
+> Stateful agent files that nest, accumulate, and persist across sessions. A file-based state system for AI agents.
+
+## What
+CONTINUITY is a template and state pack library for persistent AI agent state. AI agents forget everything between conversations. CONTINUITY gives them a memory that persists — in files you can read, edit, and version.
+
+## Entry point
+CLAUDE.md, HERMES.md, or AGENTS.md — whatever your agent auto-loads — is the entry point. It declares the state topology: which files exist, what loads on boot, and state governance rules. Without it, CONTINUITY becomes a folder of orphaned docs. For agents that auto-load these files (Claude Code loads CLAUDE.md, Cursor loads .cursorrules, Hermes loads AGENTS.md, Agent Zero loads AGENTS.md), nest your state references there. Enforcement = self-reference. The agent follows its own specification as it runs.
+
+## Auto-injection
+Some frameworks auto-inject files into the agent's context. AGENTS.promptinclude.md is for tools that support auto-loading (Cursor's .cursorrules, Agent Zero's promptinclude). If your agent supports auto-injection, put your load order and state references in the auto-loaded file.
+
+## Self-updating feedback loop
+The agent writes these files, not just reads them. After completing work: updates STATE.md, moves done tasks from TODO.md to completed/, appends learnings to memory/. Without this feedback loop, it's just static config. CONTINUITY is templates + grammar, not a framework. The operator owns the plumbing.
+
+## Templates + packs + grammar
+CONTINUITY gives you: structured markdown templates and state packs for agent state (STATE, TODO, MEMORY, etc.), scoping model (load src/auth/STATE.md not global STATE), nesting pattern (files grow → split into subdirs), mesh concept (one entry serves multiple state files), git as history layer. You provide: how the agent reads/writes files, validation, merge/conflict handling, commit cadence.
+
+## Core concepts
+- **State / History / Library ontology**: Root .md files overwrite in place (state), nested dirs append (history), nested dirs curate (library)
+- **Nesting**: Any file can nest into project/subsystem/task directories. Only the minimal chain loads at runtime.
+- **Mesh patterns**: State files index nested directories as many-to-many graph edges. Three key patterns: shared history (one audit serves STATE.md + LEARNINGS.md), cross-cutting memory (one memory entry serves MEMORY.md + KNOWLEDGE.md), artifact provenance (one artifact serves ARTIFACTS.md + STATE.md). Mesh is explicit — each state file declares its edges. Start with hierarchy, add mesh only when needed. Index, don't copy.
+- **Schema-mesh coupling**: The schema defines what can exist; the mesh defines how it connects. Taxonomy determines meshability (State files are indexers only, History/Library dirs can be indexed by multiple). Schema changes require mesh updates. BINDING.schema.json formalizes the contract for recursive agents.
+- **Boot protocol**: INIT.md runs a 9-stage reconstitution: PREFLIGHT → INSPECT → SCAN → LOAD → RECONCILE → DISCOVER → VALIDATE → DECLARE → SNAPSHOT
+- **Git: versioned snapshots**: Every commit is a verifiable snapshot of the agent's cognitive state
+- **Scoped state resolution**: Before action, load the smallest sufficient chain from root to active task
+- **Post-action reconciliation**: After meaningful change, update files whose claims are no longer accurate
+
+## File clusters
+- **Identity**: IDENTITY.md, SOUL.md, SELF.md, USER.md
+- **Boot**: INIT.md, AGENTS.md, BOOT.md, BOOTSTRAP.md
+- **State**: STATE.md, CONTEXT.md, PLAN.md, TODO.md, TASKS.md, SNAPSHOT.md
+- **Memory**: MEMORY.md, KNOWLEDGE.md, LEARNINGS.md + memory/, knowledge/ dirs
+- **Capability**: TOOLS.md, INFRASTRUCTURE.md, POTENTIAL.md, CONTEXT_BUDGET.md, EVENTS.md, ARTIFACTS.md
+- **Safety**: WARNING.md, CHECKPOINT.md
+- **Runtime**: AGENT_ACTIONS.md, BINDING.schema.json
+
+## Tiers
+- **Minimum** (8 files): AGENTS, IDENTITY, SELF, STATE, INIT, TODO, SNAPSHOT + WARNING
+- **Standard** (14 files): + SOUL, USER, MEMORY, TOOLS, PLAN, CONTEXT
+- **Full** (25 files): + LEARNINGS, HEARTBEAT, KNOWLEDGE, TASKS, BACKLOG, EVENTS, ARTIFACTS, BOOT, BOOTSTRAP, CHECKPOINT, AGENT_ACTIONS
+- **Advanced** (28 files): + INFRASTRUCTURE, POTENTIAL, CONTEXT_BUDGET, BINDING.schema.json
+
+## Quick start
+1. Clone the repo
+2. Copy the files you need into your agent workspace
+3. Replace {{VARIABLES}} with your agent's values
+4. Point your agent to AGENTS.md or CLAUDE.md — it declares the state topology and boots itself
+
+## Links
+- [GitHub Repository](https://github.com/bitwikiorg/continuity)
+- [GitHub Pages Site](https://bitwikiorg.github.io/continuity/)
+- [BIThub Community](https://hub.bitwiki.org/)
+- [BITwiki Knowledge Base](https://bitwiki.org/)
+
+## For AI agents
+Copy a pack or individual templates. This is a state pack system, not a fixed identity. Copy the files, fill in the placeholders, delete what you don't need. The principle is fixed: externalize state, load only what's relevant, update when reality changes, preserve history. The implementation is yours.
+
+CLAUDE.md (or AGENTS.md, or HERMES.md) is required — it declares the state topology: which files exist, what loads on boot, and state governance rules. Without it, CONTINUITY is a folder of orphaned docs.
+
+Loops are the units of intelligence: observe → reason → act → update state. State files exist to serve loops. TODO.md exists because the execution loop reads it. IDENTITY.md exists because the reasoning loop needs it stable. Remove a loop, remove its state files.
+
+30+ files is heavy. Most agents need 3-5. Start with AGENTS.md + TODO.md + STATE.md. Add files only when your agent's loop actually needs them.

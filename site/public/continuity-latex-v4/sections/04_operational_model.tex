@@ -1,0 +1,46 @@
+
+\section{Operational Model}
+
+\input{figures/fig_scope_resolution}
+
+A Continuity workspace can be modeled as a tuple
+\begin{equation}
+\label{eq:workspace}
+C = \langle M, S, T, L, H, A, G, V, \Omega \rangle,
+\end{equation}
+where $M$ is the manifest set, $S$ the current-state set, $T$ the task queue, $L$ learned memory, $H$ semantic history, $A$ generated artifacts, $G$ version history, $V$ validators and enforcement mechanisms, and $\Omega$ the active agent set.
+
+For a path $p$ and context budget $B$, Continuity does not load every available file. It loads the smallest relevant slice:
+\begin{equation}
+\label{eq:load}
+load(p,B)=\operatorname{select}(M\cup S\cup T\cup L\mid scope(p)) \quad \text{s.t.} \quad tokens(load)\leq B.
+\end{equation}
+The function is intentionally abstract. Its purpose is normative, not implementation-specific: keep the live context small, task-specific, and explicit.
+
+\subsection{Reconciliation invariant}
+
+Every action that changes repository reality risks invalidating recorded state. Continuity therefore requires a reconciliation step after meaningful work:
+\begin{equation}
+\label{eq:reconcile}
+state(C_{after}) \approx reality(R_{after}).
+\end{equation}
+The approximation symbol is deliberate. Natural-language state files cannot perfectly encode repository truth. They can, however, remain close enough to prevent stale planning and repeated errors.
+
+\input{figures/fig_reconciliation_loop}
+
+\subsection{Safety inheritance}
+
+Local context should refine parent guidance, not weaken it. If a repository-level file forbids destructive commands without approval, a subdirectory file must not silently remove that rule. Continuity expresses that constraint as
+\begin{equation}
+\label{eq:safety}
+safety(child) \supseteq safety(parent).
+\end{equation}
+
+\subsection{Evidence requirement}
+
+Completion without evidence is only an assertion. Continuity therefore treats a task as complete only when a reviewable artifact exists:
+\begin{equation}
+\label{eq:evidence}
+status(task)=complete \Rightarrow \exists e\in(A\cup G\cup H): supports(e,task).
+\end{equation}
+A passing test log, an artifact bundle, a review record, or a commit can satisfy this condition.

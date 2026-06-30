@@ -1,0 +1,29 @@
+
+\section{Multi-Agent Collaboration}
+
+\input{figures/fig_multi_agent_blackboard}
+
+CONTINUITY becomes more useful when several agents or humans share the same repository, but multi-agent use also raises the cost of ambiguity. A shared \statefile{TASKS.md} is helpful only if agents can claim work, avoid overlap, and leave handoff evidence behind.
+
+\subsection{Repository as filesystem blackboard}
+
+The shared repository can play the role of a versioned blackboard. Agents read the active queue, claim a task, load the relevant state slice, execute work on a branch, publish evidence, and request review. That pattern aligns with blackboard coordination and contract-based allocation without pretending that the repository itself is a scheduler \cite{Corkill1991Blackboard,Smith1980ContractNet}.
+
+\subsection{Minimal collaboration artifacts}
+
+A workable multi-agent setup needs only a few extra artifacts:
+\begin{itemize}
+  \item \statefile{TASKS.md} for the queue,
+  \item \file{claims/} for task ownership and expiry,
+  \item \file{BINDING.schema.json} for role or permission contracts,
+  \item \file{artifacts/} for outputs and test evidence,
+  \item \file{reviews/} for approval and merge decisions.
+\end{itemize}
+
+\subsection{Collision control}
+
+Two agents should not edit the same semantic object without coordination. In practice that means branch isolation, expiring claims, merge checks, and review gates. CONTINUITY can record these controls, but external tooling must enforce them.
+
+\subsection{Handoff quality}
+
+The main win is not full autonomy. The main win is cleaner handoff. When an implementer agent stops, the tester or reviewer should be able to answer three questions immediately: what changed, what remains, and what proves the current state.

@@ -1,0 +1,10 @@
+
+\begin{calloutbox}[colframe=BitTeal!60!BitNavy]
+\textbf{Abstract.} Coding agents lose context at every session boundary. They may remember the current file, yet forget the architecture decision made two hours earlier, the test that already failed, or the constraint that makes an apparently simple edit dangerous. \systemname{} addresses that gap with a small \repo{} \stateascode{} grammar: manifest files for boot logic, state files for current truth, task files for the active queue, memory files for durable lessons, append-only history, and artifact directories for evidence. The system is deliberately narrow. It is not an agent runtime, a vector database, or a general \RAG{} layer. It is a file convention for keeping high-signal agent state close to the code.
+
+The argument is two-sided. Work on external memory for \LLMs{} supports persistent state outside the context window. Current coding tools also confirm the practical value of repository-local instruction files such as \statefile{AGENTS.md} and \file{CLAUDE.md}. At the same time, recent empirical studies show that repository context files can raise cost and reduce task success when they are bloated, stale, or internally inconsistent. The useful system is therefore small, scoped, current, and validated. This paper formalizes that stance, defines the core artifact classes, models state loading and reconciliation, extends the design to multi-agent collaboration, and outlines an evaluation and threat model suitable for an arXiv-level systems paper.
+\end{calloutbox}
+
+\begin{calloutbox}[colback=white,colframe=BitLine,boxrule=0.4pt]
+\textbf{Keywords.} AI coding agents; persistent state; repository-local context; \statefile{AGENTS.md}; software architecture knowledge; workflow provenance; multi-agent coordination; prompt injection.
+\end{calloutbox}

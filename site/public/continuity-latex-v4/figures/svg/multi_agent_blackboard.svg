@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#556278"/></marker></defs>
+<text x="80" y="80" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" fill="#111827" text-anchor="start">Multi-agent filesystem blackboard</text>
+<rect x="100" y="145" width="200" height="70" rx="8" fill="white" stroke="#111827" stroke-width="2"/>
+<text x="200" y="188" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">Planner</text>
+<rect x="100" y="265" width="200" height="70" rx="8" fill="white" stroke="#111827" stroke-width="2"/>
+<text x="200" y="308" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">Implementer</text>
+<rect x="100" y="385" width="200" height="70" rx="8" fill="white" stroke="#111827" stroke-width="2"/>
+<text x="200" y="428" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">Tester</text>
+<rect x="100" y="505" width="200" height="70" rx="8" fill="white" stroke="#111827" stroke-width="2"/>
+<text x="200" y="548" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">Reviewer</text>
+<rect x="670" y="145" width="300" height="70" rx="8" fill="#FFF7E6" stroke="#111827" stroke-width="2"/>
+<text x="820" y="188" font-family="IBM Plex Mono, Consolas, monospace" font-size="24" font-weight="600" fill="#111827" text-anchor="middle">TASKS.md</text>
+<rect x="670" y="265" width="300" height="70" rx="8" fill="white" stroke="#111827" stroke-width="2"/>
+<text x="820" y="308" font-family="IBM Plex Mono, Consolas, monospace" font-size="24" font-weight="600" fill="#111827" text-anchor="middle">claims/</text>
+<rect x="670" y="385" width="300" height="70" rx="8" fill="#E8FAF9" stroke="#111827" stroke-width="2"/>
+<text x="820" y="428" font-family="IBM Plex Mono, Consolas, monospace" font-size="24" font-weight="600" fill="#111827" text-anchor="middle">STATE.md</text>
+<rect x="670" y="505" width="300" height="70" rx="8" fill="#FFF0F0" stroke="#111827" stroke-width="2"/>
+<text x="820" y="548" font-family="IBM Plex Mono, Consolas, monospace" font-size="24" font-weight="600" fill="#111827" text-anchor="middle">artifacts/ + reviews/</text>
+<line x1="300" y1="180" x2="670" y2="180" stroke="#556278" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="300" y1="300" x2="670" y2="300" stroke="#556278" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="300" y1="420" x2="670" y2="420" stroke="#556278" stroke-width="3" marker-end="url(#arrow)"/>
+<line x1="300" y1="540" x2="670" y2="540" stroke="#556278" stroke-width="3" marker-end="url(#arrow)"/>
+</svg>

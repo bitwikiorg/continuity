@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Binding",
+  "description": "Contract for spawning a bounded agent. Every agent must have a binding before execution.",
+  "type": "object",
+  "required": ["binding_id", "who", "what", "budget", "allowed_tools", "stop_conditions"],
+  "properties": {
+    "binding_id": {
+      "type": "string",
+      "description": "Unique binding identifier",
+      "example": "binding-2026-06-29-backend-001"
+    },
+    "who": {
+      "type": "object",
+      "required": ["name", "role"],
+      "properties": {
+        "name": { "type": "string", "example": "backend-worker" },
+        "role": { "type": "string", "example": "api-developer" },
+        "parent": { "type": "string", "description": "Parent agent name", "example": "orchestrator" },
+        "type": {
+          "type": "string",
+          "enum": ["worker", "team-leader"],
+          "description": "Worker = sterile (no subordinates). Team leader = scoped subordinates."
+        }
+      }
+    },
+    "what": {
+      "type": "object",
+      "required": ["objective"],
+      "properties": {
+        "objective": { "type": "string", "example": "Implement /auth/register endpoint with input validation" },
+        "success_criteria": { "type": "string", "example": "Endpoint returns 201 on valid input, 400 on invalid input, tests passing" }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "max_seconds": { "type": "number", "example": 1800, "description": "Wall-clock time limit" },
+        "max_tokens": { "type": "number", "example": 80000, "description": "Token budget for LLM calls" },
+        "max_turns": { "type": "number", "example": 20, "description": "Maximum reasoning turns" },
+        "max_depth": {
+          "type": "number",
+          "example": 0,
+          "description": "0 = worker (no subordinates), 1 = team leader (can spawn workers)"
+        },
+        "max_subordinates": { "type": "number", "example": 0, "description": "Max agents this agent can spawn" },
+        "max_disk_mb": { "type": "number", "example": 200 }
+      }
+    },
+    "allowed_tools": {
+      "type": "array",
+      "items": { "type": "string" },
+      "example": ["code_execution_tool", "text_editor", "search_engine"],
+      "description": "Tools the agent is permitted to use. Workers must not include call_subordinate."
+    },
+    "stop_conditions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "example": ["Task completed", "Budget exhausted", "Checkpoint approval denied"],
+      "description": "Conditions that terminate the binding"
+    },
+    "writeback": {
+      "type": "object",
+      "properties": {
+        "to": { "type": "string", "example": "tasks/T1-result.md", "description": "Path for result output" },
+        "format": { "type": "string", "enum": ["markdown", "json", "text"], "example": "markdown" }
+      }
+    },
+    "h_gate": {
+      "type": "object",
+      "description": "Human approval gate for irreversible actions",
+      "properties": {
+        "required": { "type": "boolean", "example": false },
+        "triggers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "example": ["Deploy to production", "Delete database", "Modify access controls"]
+        }
+      }
+    }
+  }
+}

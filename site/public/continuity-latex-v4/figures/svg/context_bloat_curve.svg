@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect width="100%" height="100%" fill="white"/>
+<text x="80" y="80" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" fill="#111827" text-anchor="start">Context bloat curve</text>
+<line x1="130" y1="610" x2="1050" y2="610" stroke="#111827" stroke-width="3"/>
+<line x1="130" y1="610" x2="130" y2="120" stroke="#111827" stroke-width="3"/>
+<path d="M170 550 C300 250, 520 130, 690 230 C850 330, 940 480, 1010 555" fill="none" stroke="#2EA8FF" stroke-width="7"/>
+<line x1="550" y1="610" x2="550" y2="175" stroke="#556278" stroke-width="2"/>
+<text x="550" y="160" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#111827" text-anchor="middle">minimal scoped state</text>
+<text x="280" y="670" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">too little context</text>
+<text x="910" y="670" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">bloat and conflict</text>
+<text x="600" y="725" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">loaded context</text>
+<text x="60" y="350" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="400" fill="#111827" text-anchor="middle">task success</text>
+</svg>

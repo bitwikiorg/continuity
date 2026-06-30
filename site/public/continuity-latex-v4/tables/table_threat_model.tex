@@ -1,0 +1,17 @@
+
+\begin{table}[H]
+\centering
+\caption{Condensed threat model.}
+\label{tab:threat-model}
+\small
+\rowcolors{2}{BitGray}{white}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{2.75cm}X}
+\rowcolor{BitNavy!8}
+\textbf{Element} & \textbf{Examples} \\
+Assets & source code, secrets, state files, task queues, artifacts, permissions \\
+Adversaries & malicious pull requests, poisoned issues, prompt-injected docs, careless agents \\
+Attack surfaces & manifests, state files, imported text, tool output, generated summaries, hooks \\
+Failures & injection, stale-state obedience, false completion, secret persistence, agent collision \\
+Mitigations & validation, context budgets, hooks, sandboxing, least privilege, review, signed commits \\
+\end{tabularx}
+\end{table}

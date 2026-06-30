@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="800" height="240">
+  <style>
+    .bg { fill: #0d1117; }
+    .accent-line { stroke: #58a6ff; stroke-width: 3; }
+    .title { fill: #f0f6fc; font-family: sans-serif; font-size: 36px; font-weight: 800; }
+    .subtitle { fill: #8b949e; font-family: sans-serif; font-size: 16px; }
+    .tag { fill: #3fb950; font-family: sans-serif; font-size: 14px; font-weight: 600; }
+    .box-state { fill: #1c2128; stroke: #58a6ff; stroke-width: 1.5; }
+    .box-history { fill: #1c2128; stroke: #d29922; stroke-width: 1.5; }
+    .box-library { fill: #1c2128; stroke: #3fb950; stroke-width: 1.5; }
+    .box-label { fill: #c9d1d9; font-family: sans-serif; font-size: 12px; font-weight: 600; }
+    .box-sub { fill: #8b949e; font-family: sans-serif; font-size: 10px; }
+    .arrow { stroke: #30363d; stroke-width: 1.5; fill: none; }
+    .git-tag { fill: #8b949e; font-family: sans-serif; font-size: 10px; }
+    @media (prefers-color-scheme: light) {
+      .bg { fill: #ffffff; }
+      .accent-line { stroke: #0969da; }
+      .title { fill: #1f2328; }
+      .subtitle { fill: #656d76; }
+      .tag { fill: #1a7f37; }
+      .box-state { fill: #ddf4ff; stroke: #0969da; }
+      .box-history { fill: #fff8c5; stroke: #bf8700; }
+      .box-library { fill: #dafbe1; stroke: #1a7f37; }
+      .box-label { fill: #1f2328; }
+      .box-sub { fill: #656d76; }
+      .arrow { stroke: #d0d7de; }
+      .git-tag { fill: #656d76; }
+    }
+  </style>
+  <rect class="bg" width="800" height="240" rx="10"/>
+  <line class="accent-line" x1="40" y1="40" x2="120" y2="40"/>
+  <text class="title" x="40" y="80">Continuity</text>
+  <text class="subtitle" x="40" y="110">Persistent state for AI agents</text>
+  <text class="tag" x="40" y="135">The runtime dies. The agent persists.</text>
+  <rect class="box-state" x="40" y="160" width="140" height="50" rx="6"/>
+  <text class="box-label" x="110" y="182" text-anchor="middle">STATE</text>
+  <text class="box-sub" x="110" y="198" text-anchor="middle">Overwrite in place</text>
+  <line class="arrow" x1="180" y1="185" x2="210" y2="185"/>
+  <rect class="box-history" x="210" y="160" width="140" height="50" rx="6"/>
+  <text class="box-label" x="280" y="182" text-anchor="middle">HISTORY</text>
+  <text class="box-sub" x="280" y="198" text-anchor="middle">Append only</text>
+  <line class="arrow" x1="350" y1="185" x2="380" y2="185"/>
+  <rect class="box-library" x="380" y="160" width="140" height="50" rx="6"/>
+  <text class="box-label" x="450" y="182" text-anchor="middle">LIBRARY</text>
+  <text class="box-sub" x="450" y="198" text-anchor="middle">Curate freely</text>
+  <text class="git-tag" x="600" y="182">+ git = blockchain</text>
+  <text class="git-tag" x="600" y="198">of self states</text>
+</svg>

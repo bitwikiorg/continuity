@@ -1,0 +1,12 @@
+
+\section{Appendix B: Suggested lints}
+
+\begin{itemize}
+  \item Reject unresolved placeholders such as \file{\{\{VARIABLE\}\}} in trusted state files.
+  \item Reject root manifests that exceed a configurable line or token budget.
+  \item Warn when \file{STATE.md} contains stale timestamps or diary-style history.
+  \item Warn when archives appear in default load lists.
+  \item Reject nested files that weaken parent safety rules.
+  \item Reject completed tasks that do not reference commits, tests, or artifacts.
+  \item Warn when generated summaries are promoted without review metadata.
+\end{itemize}

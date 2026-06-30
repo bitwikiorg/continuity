@@ -1,0 +1,16 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[node distance=0.42cm, every node/.style={figlabel}, layer/.style={figbox, minimum width=9.6cm, minimum height=.74cm, align=center}]
+\path[figpanel] (-0.85,-0.65) rectangle (10.45,4.55);
+\node[figtitle, anchor=west] at (-0.4,4.08) {CONTROL STACK};
+\node[layer, fill=BitGray] (p) at (4.8,0) {Markdown state};
+\node[layer, above=of p, fill=BitBlue!8, draw=BitBlue!65] (s) {Schema};
+\node[layer, above=of s, fill=BitTeal!8, draw=BitTeal!70] (l) {Linter};
+\node[layer, above=of l, fill=BitGold!10, draw=BitGold!75!black] (h) {Hook / continuous integration};
+\node[layer, above=of h, fill=BitRose!10, draw=BitRose!65] (t) {Test / sandbox / approval};
+\draw[figarrow] ($(p.east)+(0.35,0)$) -- node[right, figsmall] {harder control} ($(t.east)+(0.35,0)$);
+\end{tikzpicture}
+\caption{Readable text is useful. Reliable control requires stronger layers around it.}
+\label{fig:enforcement-stack}
+\end{figure}

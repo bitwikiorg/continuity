@@ -1,0 +1,18 @@
+
+\begin{table}[H]
+\centering
+\caption{Primary metric families for a CONTINUITY evaluation.}
+\label{tab:evaluation-metrics}
+\small
+\rowcolors{2}{BitGray}{white}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{2.9cm}X}
+\rowcolor{BitNavy!8}
+\textbf{Metric family} & \textbf{Examples} \\
+Task outcome & success rate, pass@1, regression count, patch correctness \\
+Efficiency & input tokens, output tokens, tool calls, wall-clock time, cost \\
+Continuity & resumption latency, repeated-error rate, stale-state incidence, reconciliation completeness \\
+Multi-agent & claim conflict rate, duplicate work, merge conflicts, handoff success \\
+Governance & instruction compliance, review time, smell prevalence, override frequency \\
+Security & prompt-injection obedience, secret leakage, unauthorized action attempts \\
+\end{tabularx}
+\end{table}

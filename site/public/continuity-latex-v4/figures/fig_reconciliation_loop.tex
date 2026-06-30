@@ -1,0 +1,17 @@
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[every node/.style={figlabel}, file/.style={figbox, minimum width=3.55cm, minimum height=1.28cm, align=center}]
+\path[figpanel] (-1.05,-2.35) rectangle (10.2,2.55);
+\node[figtitle, anchor=west] at (-0.6,2.1) {RECONCILIATION};
+\node[file, fill=BitTeal!8, draw=BitTeal!75] (old) at (0.9,0) {\statefile{STATE.md}\\\figsmall API not deployed};
+\node[draw, circle, fill=BitGold!18, draw=BitGold!80!black, minimum size=1.28cm, font=\sffamily\small] (change) at (4.55,0) {change};
+\node[file, fill=BitTeal!8, draw=BitTeal!75] (new) at (8.3,1.05) {\statefile{STATE.md}\\\figsmall API deployed};
+\node[file, fill=BitRose!8, draw=BitRose!72] (hist) at (8.3,-1.15) {\file{snapshots/}\\\figsmall pre-deploy state};
+\draw[figarrow] (old) -- (change);
+\draw[figflow] (change) -- node[above, figsmall, fill=white, inner sep=1.5pt] {overwrite present} (new);
+\draw[figdanger] (change) -- node[below, figsmall, fill=white, inner sep=1.5pt] {append past} (hist);
+\end{tikzpicture}
+\caption{The live state updates in place, while the old state moves to append-only history.}
+\label{fig:reconciliation-loop}
+\end{figure}

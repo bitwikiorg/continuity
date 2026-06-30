@@ -1,0 +1,22 @@
+
+\section{Negative Evidence and Design Constraints}
+
+\input{figures/fig_constraint_funnel}
+
+The most useful recent papers in this area are cautionary. Gloaguen et al. show that repository-level context files do not automatically improve coding-agent performance and can increase inference cost substantially \cite{Gloaguen2026Agents}. Dos Santos et al. show that context files themselves suffer from recurring maintenance defects \cite{DosSantos2026Smells}. CONTINUITY treats those findings as hard design pressure, not as footnotes.
+
+\input{tables/table_negative_evidence_constraints}
+
+\subsection{Anti-patterns}
+
+\sectionlead{Manifest monolith.} One giant file tries to store policy, current state, old history, and tutorial prose. The result is noise.
+
+\sectionlead{State diary.} \statefile{STATE.md} becomes a chronological log instead of a compact statement of current truth.
+
+\sectionlead{Archive-on-boot.} Old snapshots and completed work load by default, wasting context budget.
+
+\sectionlead{False completion.} Tasks move to done without tests, artifacts, or reviewable evidence.
+
+\sectionlead{Unbounded local override.} A nested file quietly weakens a repository-level safety rule.
+
+Each anti-pattern has the same cure: keep state narrow, move history out of the hot path, and enforce what prose alone cannot enforce.

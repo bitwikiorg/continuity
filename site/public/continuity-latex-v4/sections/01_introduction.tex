@@ -1,0 +1,32 @@
+
+\section{Introduction}
+
+Coding agents now work at repository scale. They inspect code, edit files, run tests, collect logs, and synthesize patches across many steps. That workflow exposes a recurring weakness: each session begins with partial amnesia. The next agent may inherit the codebase, but not the local truth that made the last session coherent.
+
+\input{figures/fig_intro_state_gap}
+
+Four kinds of state are commonly lost. First, \term{current truth} drifts: the repository may have changed, but the agent still acts on an earlier plan. Second, \term{attempt history} disappears: failures are repeated because earlier experiments were never captured. Third, \term{operational constraints} get buried in chat logs, issue threads, or a developer's head. Fourth, \term{handoff state} is weak: one agent cannot easily tell another what remains, what is blocked, and what evidence already exists.
+
+Tool practice has started to converge on a partial fix. Codex loads \statefile{AGENTS.md} before work and composes instructions across global, repository, and directory scopes \cite{OpenAICodexAgents}. Claude Code documents persistent repository context through \file{CLAUDE.md} and distinguishes that soft context from hard enforcement \cite{AnthropicClaudeMemory,AnthropicClaudeHooks}. Hermes progressively discovers local context files as the agent moves through a project \cite{HermesContextFiles}. OpenClaw stores memory as plain Markdown on disk rather than hidden platform state \cite{OpenClawMemory}. These systems already treat the repository as part of the agent interface.
+
+\systemname{} extends that interface into a compact state substrate. It does not ask one file to do everything. It separates stable boot guidance from mutable state, active tasks, learned lessons, append-only history, and generated evidence. The minimal core stays intentionally small:
+
+\begin{calloutbox}[colback=BitGray,colframe=BitLine,title=Minimal CONTINUITY core]
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{2.9cm}X}
+\statefile{AGENTS.md} & boot order, governance, load rules \\
+\statefile{STATE.md} & current project truth \\
+\statefile{TODO.md} & executable task queue \\
+\statefile{LEARNINGS.md} & compact reflection and reusable lessons \\
+\statefile{MEMORY.md} & durable facts index, loaded selectively \\
+\file{completed/} & append-only records of finished work \\
+\file{snapshots/} & recovery checkpoints \\
+\file{artifacts/} & outputs, logs, test evidence \\
+\statefile{CHECKPOINT.md} & approval gates for high-risk actions \\
+\end{tabularx}
+\end{calloutbox}
+
+The point is not to create a repository diary. The point is to keep the smallest set of files that preserve continuity across sessions and across agents.
+
+Recent evidence makes the design constraint sharper. Gloaguen et al. find that repository context files do not reliably improve coding-agent task success and can increase inference cost by more than 20\% on average \cite{Gloaguen2026Agents}. Dos Santos et al. report six recurring configuration smells in \statefile{AGENTS.md}-style files, including \term{context bloat} (too much irrelevant or diffuse instruction), \term{lint leakage} (tool-output noise or rules pasted directly into the manifest), \term{skill leakage} (specialized or personal instructions spilling into shared context), and \term{conflicting instructions} \cite{DosSantos2026Smells}. Those results rule out the obvious mistake: more prose is not automatically better state.
+
+The rest of the paper develops the positive version of that negative lesson. \systemname{} works when it remains compact, scoped, current, and reviewable. The next sections show where that stance comes from, how the file grammar works, how multi-agent collaboration fits, and how the design should be evaluated and constrained.

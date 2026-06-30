@@ -1,0 +1,179 @@
+
+\documentclass[11pt]{article}
+
+% --------------------------------------------------------------------------
+% Packages
+% --------------------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{ifthen}
+\usepackage{microtype}
+\IfFileExists{newtxtext.sty}{\usepackage{newtxtext,newtxmath}}{\usepackage{lmodern}}
+\usepackage{setspace}
+\usepackage{xspace}
+\usepackage{parskip}
+\usepackage{amsmath,mathtools}
+\usepackage{booktabs,longtable,array,tabularx,multirow}
+\usepackage{enumitem}
+\usepackage[svgnames,table]{xcolor}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,shapes.geometric,calc,backgrounds,patterns,decorations.pathreplacing}
+\usepackage[most]{tcolorbox}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[hidelinks]{hyperref}
+\usepackage[backend=biber,style=numeric-comp,sorting=none,maxbibnames=6]{biblatex}
+\addbibresource{bib/references.bib}
+
+% --------------------------------------------------------------------------
+% Color palette
+% --------------------------------------------------------------------------
+\definecolor{BitNavy}{HTML}{081122}
+\definecolor{BitBlue}{HTML}{2EA8FF}
+\definecolor{BitTeal}{HTML}{18D2C3}
+\definecolor{BitGold}{HTML}{F3B546}
+\definecolor{BitSlate}{HTML}{556278}
+\definecolor{BitGray}{HTML}{F6F8FB}
+\definecolor{BitInk}{HTML}{111827}
+\definecolor{BitRose}{HTML}{FF6A5B}
+\definecolor{BitLine}{HTML}{D9E2EF}
+
+% --------------------------------------------------------------------------
+% Typography and spacing
+% --------------------------------------------------------------------------
+\setstretch{1.06}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlength{\emergencystretch}{2em}
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom
+
+\titleformat{\section}
+  {\Large\sffamily\bfseries\color{BitInk}}
+  {\thesection}{0.8em}{}
+\titleformat{\subsection}
+  {\large\sffamily\bfseries\color{BitInk}}
+  {\thesubsection}{0.7em}{}
+\titleformat{\subsubsection}
+  {\normalsize\sffamily\bfseries\color{BitInk}}
+  {\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.2em}{0.55em}
+\titlespacing*{\subsection}{0pt}{1em}{0.35em}
+\titlespacing*{\subsubsection}{0pt}{0.7em}{0.2em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily\small\textcolor{BitSlate}{CONTINUITY}}
+\fancyhead[R]{\sffamily\small\textcolor{BitSlate}{BITwiki Research}}
+\fancyfoot[C]{\sffamily\small\textcolor{BitSlate}{\thepage}}
+\setlength{\headheight}{14pt}
+\setlength{\textfloatsep}{15pt plus 2pt minus 2pt}
+\setlength{\intextsep}{14pt plus 2pt minus 2pt}
+\setlength{\floatsep}{12pt plus 2pt minus 2pt}
+\setlength{\tabcolsep}{7pt}
+\renewcommand{\arraystretch}{1.18}
+
+
+
+
+\hypersetup{colorlinks=true, linkcolor=BitBlue!65!BitNavy, citecolor=BitBlue!65!BitNavy, urlcolor=BitBlue!65!BitNavy}
+
+
+\captionsetup[figure]{font={small,sf},labelfont={bf,sf},textfont={sf},labelsep=period,skip=7pt,justification=raggedright,singlelinecheck=false,width=.96\linewidth}
+\captionsetup[table]{font={small,sf},labelfont={bf,sf},textfont={sf},labelsep=period,skip=7pt,justification=raggedright,singlelinecheck=false,width=.96\linewidth}
+
+\tikzset{
+  figlabel/.style={font=\sffamily\small, text=BitInk},
+  figsmall/.style={font=\sffamily\scriptsize, text=BitInk},
+  figtitle/.style={font=\sffamily\bfseries\small, text=BitInk},
+  figbox/.style={draw=BitSlate!80, line width=0.8pt, rounded corners=4pt, fill=white},
+  livebox/.style={figbox, fill=BitBlue!8, draw=BitBlue!70},
+  statebox/.style={figbox, fill=BitTeal!10, draw=BitTeal!75},
+  taskbox/.style={figbox, fill=BitGold!12, draw=BitGold!75!black},
+  histbox/.style={figbox, fill=BitRose!9, draw=BitRose!65},
+  neutralbox/.style={figbox, fill=BitGray},
+  softbox/.style={figbox, fill=white, draw=BitLine, text=BitSlate},
+  figpanel/.style={draw=BitLine, fill=BitGray!45, rounded corners=7pt, line width=0.7pt},
+  figarrow/.style={-Latex, line width=1.0pt, draw=BitSlate!85},
+  figflow/.style={-Latex, line width=1.25pt, draw=BitBlue!82},
+  figreturn/.style={-Latex, line width=1.25pt, draw=BitTeal!82!black},
+  figdanger/.style={-Latex, line width=1.0pt, draw=BitRose!85!black}
+}
+
+\setlist[itemize]{leftmargin=1.35em,topsep=0.3em,itemsep=0.3em,parsep=0pt}
+\setlist[enumerate]{leftmargin=1.55em,topsep=0.3em,itemsep=0.3em,parsep=0pt}
+\lstset{
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  columns=fullflexible,
+  frame=single,
+  framerule=0.4pt,
+  rulecolor=\color{BitLine},
+  backgroundcolor=\color{BitGray}
+}
+
+% --------------------------------------------------------------------------
+% Macros
+% --------------------------------------------------------------------------
+\newcommand{\systemname}{\textsc{CONTINUITY}\xspace}
+\newcommand{\bitwiki}{BITwiki}
+\newcommand{\repo}{repository-native}
+\newcommand{\stateascode}{state-as-code}
+\newcommand{\LLM}{large language model\xspace}
+\newcommand{\LLMs}{large language models\xspace}
+\newcommand{\RAG}{retrieval-augmented generation\xspace}
+\newcommand{\CSCW}{computer-supported cooperative work\xspace}
+\newcommand{\SWEbench}{SWE-bench\xspace}
+\newcommand{\file}[1]{\texttt{#1}}
+\newcommand{\statefile}[1]{\texttt{\textbf{#1}}}
+\newcommand{\term}[1]{\emph{#1}}
+\newcommand{\Eq}[1]{Eq.~\eqref{#1}}
+\newcommand{\figsmall}{\sffamily\scriptsize}
+
+\newtcolorbox{calloutbox}[1][]{
+  enhanced,
+  breakable,
+  colback=BitGray,
+  colframe=BitBlue!55!BitNavy,
+  colbacktitle=BitBlue!12,
+  coltitle=BitInk,
+  fonttitle=\sffamily\bfseries,
+  boxrule=0.55pt,
+  arc=2mm,
+  left=8pt,right=8pt,top=7pt,bottom=7pt,
+  #1
+}
+
+\newcommand{\sectionlead}[1]{\textbf{#1}\;}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+\input{sections/cover_page}
+\clearpage
+\hypersetup{pageanchor=true}
+\setcounter{page}{1}
+\pagenumbering{arabic}
+\input{sections/00_abstract}
+\input{sections/01_introduction}
+\input{sections/02_foundations}
+\input{sections/03_grammar}
+\input{sections/04_operational_model}
+\input{sections/05_constraints}
+\input{sections/06_implementation}
+\input{sections/07_multi_agent}
+\input{sections/08_evaluation}
+\input{sections/09_threat_model}
+\input{sections/10_discussion}
+\input{sections/11_conclusion}
+\printbibliography
+\appendix
+\input{appendix/a_templates}
+\input{appendix/b_lints}
+\end{document}
